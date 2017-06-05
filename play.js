@@ -2,7 +2,9 @@ var display;
 var id;
 
 function updatePlaybackRateDisplay() {
-  if (display) display.innerHTML = getPlaybackRate(id);
+  var rate = getPlaybackRate(id);
+  if (display) display.innerHTML = rate;
+  if (slider) slider.value = rate;
 }
 
 function getPlaybackRates() {
@@ -53,7 +55,7 @@ function createSlider(control) {
   slider.setAttribute('max', '1.5');
   slider.setAttribute('step', '0.05');
   slider.value = getPlaybackRate(id);
-  slider.onchange = function(event) {
+  slider.oninput = slider.onchange = function(event) {
     setPlaybackRate(id, event.target.value);
     updatePlaybackRateDisplay();
   }
