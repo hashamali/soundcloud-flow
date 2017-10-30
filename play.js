@@ -27,8 +27,8 @@ function setPlaybackRate(id, rate) {
 
 var proxyPlay = function(play) {
 	return function() {
-    id = this.id;
-		this.playbackRate = getPlaybackRate(id);
+    id = this.src;
+    this.playbackRate = getPlaybackRate(id);
     updatePlaybackRateDisplay();
 		return play.apply(this, arguments);
 	};
